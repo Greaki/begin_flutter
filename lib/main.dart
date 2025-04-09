@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './pages/home/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,11 +31,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _currentIndex = 0;
 
-  void _incrementCounter() {
+  void _changeIndex(int index) {
     setState(() {
-      _counter++;
+      _currentIndex = index;
     });
   }
 
@@ -46,20 +47,27 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('demo'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: <Widget>[
+        HomePage(), // 对应底部导航栏主界面选项卡
+        Container( // 对应底部导航栏主界面选项卡
+          decoration: BoxDecoration(color: Colors.white),
+          alignment: Alignment.center,
+          child: Column(
+            children: <Widget>[
+              Text("主页面选项卡2")
+            ],
+          ),
         ),
-      ),
+        Container( // 对应底部导航栏主界面选项卡
+          decoration: BoxDecoration(color: Colors.white),
+          alignment: Alignment.center,
+          child: Column(
+            children: <Widget>[
+              Text("主页面选项卡3")
+            ],
+          ),
+        ),
+      ][_currentIndex],
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(
@@ -75,9 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'School',
           ),
         ],
-        selectedIndex: 0,
+        selectedIndex: _currentIndex,
         onDestinationSelected: (int index) {
           print("点击了第$index个");
+          _changeIndex(index);
         },
       )
     );
