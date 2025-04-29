@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'first_page.dart';
+import 'my_page.dart';
+import './../detail/new_post_page.dart';
 
 // import './home.dart';
 class HomePgae extends StatefulWidget {
@@ -9,9 +10,16 @@ class HomePgae extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomePgae> {
+  int _selectedIndex = 0;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    MyPage(), // 新增的我的页面
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
+      _selectedIndex = index;
     });
   }
 
@@ -19,7 +27,7 @@ class _HomeScreenState extends State<HomePgae> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: HomePage()
+        child: _widgetOptions.elementAt(_selectedIndex),
         // child: FirstPage(),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -36,14 +44,17 @@ class _HomeScreenState extends State<HomePgae> {
             SizedBox(), // Empty space for the FloatingActionButton
             IconButton(
               icon: Icon(Icons.person),
-              onPressed: () => _onItemTapped(2),
+              onPressed: () => _onItemTapped(1),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle add button press
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewPostPage()), // 导航到新增Post页面
+          );
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.blue, // 设置背景颜色
