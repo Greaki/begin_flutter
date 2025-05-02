@@ -42,8 +42,7 @@ class _HomePageState extends State<HomePage> {
         'username': '陈美玲',
         'timeAgo': '2小时前',
         'title': '分享一下今天在家做的美食 🍽️',
-        'content':
-        '今天在家研究了一道新菜，红烧排骨配上清炒时蔬，搭配一碗米饭，简直完美！大家觉得看起来怎么样？',
+        'content': '今天在家研究了一道新菜，红烧排骨配上清炒时蔬，搭配一碗米饭，简直完美！大家觉得看起来怎么样？',
         'imageUrl': 'https://example.com/food.jpg',
         'likes': 238,
         'comments': 46,
@@ -53,8 +52,7 @@ class _HomePageState extends State<HomePage> {
         'username': '王建国',
         'timeAgo': '4小时前',
         'title': '周末徒步活动召集 🏃‍♂️',
-        'content':
-        '本周日组织徒步活动，路线是从白云山到流溪河，全程约 15 公里，难度适中。有兴趣的小伙伴可以报名参加！',
+        'content': '本周日组织徒步活动，路线是从白云山到流溪河，全程约 15 公里，难度适中。有兴趣的小伙伴可以报名参加！',
         'imageUrl': 'https://example.com/mountain.jpg',
         'likes': 156,
         'comments': 32,
@@ -77,6 +75,8 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           Expanded(
+              child: Padding(
+            padding: EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
             child: EasyRefresh(
               onRefresh: _refreshData,
               child: ListView.builder(
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-          ),
+          )),
         ],
       ),
     );
