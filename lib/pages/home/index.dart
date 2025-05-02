@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'first_page.dart';
-import 'my_page.dart';
+import '../my/index.dart';
 import './../detail/new_post_page.dart';
 
 // import './home.dart';
