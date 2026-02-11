@@ -97,6 +97,17 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           )),
+          Container(
+            height: 60,
+            margin: EdgeInsets.all(16.0),
+            child: Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/test');
+                  },
+                  child: const Text('跳转到test页面')),
+            ),
+          ),
         ],
       ),
     );

@@ -12,7 +12,12 @@ class HomePgae extends StatefulWidget {
 class _HomeScreenState extends State<HomePgae> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  // static List<Widget> _widgetOptions = <Widget>[
+  //   HomePage(),
+  //   MyPage(), // 新增的我的页面
+  // ];
+
+  final _widgetOptions = [
     HomePage(),
     MyPage(), // 新增的我的页面
   ];
@@ -53,7 +58,8 @@ class _HomeScreenState extends State<HomePgae> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => NewPostPage()), // 导航到新增Post页面
+            MaterialPageRoute(
+                builder: (context) => NewPostPage()), // 导航到新增Post页面
           );
         },
         child: Icon(Icons.add),
