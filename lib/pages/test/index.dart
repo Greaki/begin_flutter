@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../forge/forge_spacing.dart';
+
 class TestPage extends StatefulWidget {
   @override
   _TestPageState createState() => _TestPageState();
@@ -7,6 +9,23 @@ class TestPage extends StatefulWidget {
 
 class _TestPageState extends State<TestPage> {
   final List<Widget> _children = [
+    GestureDetector(
+      onTap: () => print('opTap'),
+      onDoubleTap: () => print('onDoubleTap'),
+      onLongPress: () => print('onLongPress'),
+      onTapDown: (details) => print('onTapDown'),
+      onTapUp: (details) => print('onTapUp'),
+      onTapCancel: () => print('onTapCancel'),
+      child: Container(
+        width: 100,
+        height: 100,
+        color: Colors.green.withOpacity(0.5),
+        child: Center(
+          child: Text("测试下手势"),
+        ),
+      )
+    ),
+    12.vVoid,
     Stack(
       children: [
         ElevatedButton(
@@ -19,6 +38,7 @@ class _TestPageState extends State<TestPage> {
         ),
       ],
     ),
+    12.vVoid,
     Stack(
       children: [
         // 下层按钮
@@ -42,6 +62,7 @@ class _TestPageState extends State<TestPage> {
         ),
       ],
     ),
+    12.vVoid,
     Stack(
       children: [
         // 下层按钮
@@ -51,18 +72,20 @@ class _TestPageState extends State<TestPage> {
         ),
         // 上层吸收指针的容器
         GestureDetector(
-            onTap: () => print('上层按钮被点击'),
-            child: AbsorbPointer(
-                absorbing: true,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.blue.withOpacity(0.5),
-                  child: GestureDetector(
-                    onTap: () => print('阻断层被点击'),
-                    child: const Text('阻断层'),
-                  ),
-                )))
+          onTap: () => print('上层按钮被点击'),
+          child: AbsorbPointer(
+            absorbing: true,
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue.withOpacity(0.5),
+              child: GestureDetector(
+                onTap: () => print('阻断层被点击'),
+                child: const Text('阻断层'),
+              ),
+            ),
+          ),
+        )
       ],
     )
   ];
